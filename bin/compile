@@ -188,8 +188,15 @@ build_dependencies() {
   log_build_scripts
 }
 
+build_react_app() {
+  npm run build
+}
+
 header "Building dependencies"
 build_dependencies | output "$LOG_FILE"
+
+header "Building React application"
+build_react_app | output "$LOG_FILE"
 
 cache_build() {
   local cache_directories=$(get_cache_directories)
