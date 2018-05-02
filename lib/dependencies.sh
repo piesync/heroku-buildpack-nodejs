@@ -91,7 +91,7 @@ yarn_node_modules() {
 
   echo "Installing node modules (yarn.lock)"
   cd "$build_dir"
-  yarn install --production=$production --frozen-lockfile --ignore-engines 2>&1
+  yarn install --offline --production=$production --frozen-lockfile --ignore-engines 2>&1
 }
 
 yarn_prune_devdependencies() {
@@ -109,7 +109,7 @@ yarn_prune_devdependencies() {
   else 
     local start=$(nowms)
     cd "$build_dir" 
-    yarn install --frozen-lockfile --ignore-engines --ignore-scripts --prefer-offline 2>&1
+    yarn install --install --frozen-lockfile --ignore-engines --ignore-scripts 2>&1
     mtime "prune.yarn.time" "${start}"
   fi
 }
